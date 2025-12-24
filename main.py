@@ -1,5 +1,7 @@
 # import
 import turtle
+
+
 # set up the screen
 win=turtle.Screen()
 win.title('amir snake')
@@ -10,13 +12,18 @@ win.tracer(0)
 head=turtle.Turtle()
 head.speed()
 head.shape('circle')
-head.color('red')
+head.color('gray')
 head.penup()
 head.goto(0,0)
-head.direction='stop'
+head.direction='up'
 
-
+#functions
+def move():
+    if head.direction=='up':
+        y=head.ycor()
+        head.sety(y+20)
 # main game loop
 while True:
     win.update()
+    move()
 win.mainloop()
