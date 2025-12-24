@@ -2,7 +2,7 @@
 import turtle
 import time
 
-deley=0.1
+deley=0.2
 
 
 # set up the screen
@@ -18,7 +18,7 @@ head.shape('circle')
 head.color('red')
 head.penup()
 head.goto(0,0)
-head.direction='left'
+head.direction='stop'
 
 #functions
 def go_up():
@@ -29,8 +29,6 @@ def go_right():
     head.direction='right'
 def go_left():
     head.direction='left'        
-
-
 
 def move():
     if head.direction=='up':
@@ -45,6 +43,13 @@ def move():
     if head.direction=='right':
         x=head.xcor()
         head.setx(x+20)      
+               
+#Keyboard bindings
+win.listen()
+win.onkeypress(go_down,'s')               
+win.onkeypress(go_up,'w')               
+win.onkeypress(go_left,'a')               
+win.onkeypress(go_right,'d')               
                       
 # main game loop
 while True:
