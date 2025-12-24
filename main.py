@@ -1,5 +1,8 @@
 # import
 import turtle
+import time
+
+deley=0.1
 
 
 # set up the screen
@@ -25,5 +28,6 @@ def move():
 # main game loop
 while True:
     win.update()
+    time.sleep(deley)
     move()
 win.mainloop()
