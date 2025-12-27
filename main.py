@@ -14,7 +14,7 @@ win.tracer(0)
 # snake head
 head = turtle.Turtle()
 head.speed()
-head.shape('circle')
+head.shape('square')
 head.color('green')
 head.penup()
 head.goto(0, 0)
@@ -73,6 +73,19 @@ win.onkeypress(go_right, 'd')
 # main game loop
 while True:
     win.update()
+    # check for a collision with the border
+    if head.xcor()>290 or head.xcor()<-290 or head.ycor()>290 or head.ycor()<-290:
+        time.sleep(1)
+        head.goto(0,0)
+        head.direction = 'stop'
+        
+        #Hide the segment
+        for segment in segments:
+            segment.goto(1000,1000)
+        #Clear the segments list    
+        segments.clear()
+    
+    
     # check for a collision with the food
     if head.distance(food) < 20:
         # move food to a random spot
@@ -82,8 +95,8 @@ while True:
         # Add a segment
         new_segment = turtle.Turtle()
         new_segment.speed(0)
-        new_segment.shape('circle')
-        new_segment.color('green')
+        new_segment.shape('square')
+        new_segment.color('blue')
         new_segment.penup()
         segments.append(new_segment)
         food.goto(x, y)
